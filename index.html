@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost, Found & Sell</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1 class="app-title">Lost, Found & Sell</h1>
+                
+                <!-- Search Bar -->
+                <div class="search-section">
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="form-control search-input" 
+                            placeholder="Search items by title, description, or location..."
+                        >
+                        <button id="clearSearch" class="btn btn--outline btn--sm clear-search-btn hidden">Clear</button>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="nav-tabs">
+                    <button class="nav-tab active" data-category="all">All Items</button>
+                    <button class="nav-tab" data-category="lost">Lost Items</button>
+                    <button class="nav-tab" data-category="found">Found Items</button>
+                    <button class="nav-tab" data-category="sell">For Sale</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <button id="addItemBtn" class="btn btn--primary">+ Add New Item</button>
+                    <div class="results-info">
+                        <span id="resultsCount">0 items found</span>
+                    </div>
+                </div>
+
+                <!-- Items Grid -->
+                <div class="items-grid" id="itemsGrid">
+                    <!-- Items will be populated by JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state hidden" id="emptyState">
+                    <h3>No items found</h3>
+                    <p>Try adjusting your search or browse different categories.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Add Item Modal -->
+        <div class="modal hidden" id="addItemModal">
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add New Item</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="addItemForm">
+                        <div class="form-group">
+                            <label class="form-label" for="itemCategory">Category *</label>
+                            <select class="form-control" id="itemCategory" required>
+                                <option value="">Select category...</option>
+                                <option value="lost">Lost Item</option>
+                                <option value="found">Found Item</option>
+                                <option value="sell">For Sale</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="itemTitle">Item Title *</label>
+                            <input type="text" class="form-control" id="itemTitle" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="itemDescription">Description *</label>
+                            <textarea class="form-control" id="itemDescription" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="itemLocation">Location *</label>
+                            <input type="text" class="form-control" id="itemLocation" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contactName">Your Name *</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contactEmail">Email *</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contactPhone">Phone</label>
+                            <input type="tel" class="form-control" id="contactPhone">
+                        </div>
+
+                        <div class="form-group price-group hidden">
+                            <label class="form-label" for="itemPrice">Price</label>
+                            <input type="text" class="form-control" id="itemPrice" placeholder="e.g., $100">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--outline" id="cancelForm">Cancel</button>
+                            <button type="submit" class="btn btn--primary">Add Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item Details Modal -->
+        <div class="modal hidden" id="itemDetailsModal">
+            <div class="modal-overlay" id="detailsOverlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="detailsTitle"></h2>
+                    <button class="modal-close" id="closeDetailsModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="detailsContent">
+                        <!-- Details will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
